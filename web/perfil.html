@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <link href="/web/media/css/navbar.css" rel="stylesheet" type="text/css" media="all">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+        <style>
+            .center {
+                margin-top: 5%;
+                margin-left: 28%;
+            }
+            #perfil {
+                background-color: white;
+                color: black;
+                border: 1px solid #CCCCCC;
+                border-radius: 5px !important;
+                box-shadow: 0 2px 4px -2px rgba(0,0,0,0.5);
+            }
+        </style>
+    </head>
+    <body onload="carregaUsuario()">
+        <nav class="site-header sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <a class="py-2" href="home.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+                </a>
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" id="dropdownMenuLink">
+                        <img class="user-avatar rounded-circle" src="/web/media/images/admin.png" alt="User Avatar">
+                    </a>
+                    <div class="user-menu dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="nav-link" href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a>
+                        <a class="nav-link" href="login.html"><i class="fa fa-power-off"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="col-5 text-center center" id="perfil">
+
+        </div>
+        <a class="center" href="home.html">
+            <button class="btn btn-primary btn-sm" style="margin-top: 2%;">
+                <i class="fa fa-reply"></i> Voltar
+            </button>
+        </a>
+    <script>
+        function carregaUsuario(){
+            var userStr = localStorage.getItem("user");
+            if (!userStr){
+                window.location="login.html";
+            }else{
+                var user=JSON.parse(userStr);
+                document.getElementById("perfil").innerHTML = 
+                "<h3 style='margin-top: 2%;'>" + user.nome + "</h3>" + 
+                "<p>Funcional: " + user.funcional + "</p>" + 
+                "<p>RACF: " + user.racf + "</p>" +
+                "<p>Email: " + user.email + "</p>";
+            }
+            document.getElementById("fotousuario").innerHTML="<img src=images/"+user.foto+" width='20%'>";
+        }
+    </script>
+    </body>
+</html>

@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <link href="/web/media/css/navbar.css" rel="stylesheet" type="text/css" media="all">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </head>
+    <body onload="getValues()">
+        <nav class="site-header sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <a class="py-2" href="home.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+                </a>
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" id="dropdownMenuLink">
+                        <img class="user-avatar rounded-circle" src="/web/media/images/admin.png" alt="User Avatar">
+                    </a>
+                    <div class="user-menu dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="nav-link" href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a>
+                        <a class="nav-link" href="login.html"><i class="fa fa-power-off"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="mx-auto my-2">
+            <h1 class="display-4 text-center">Nova Solicitação</h1>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Solicitação</strong>
+                    </div>
+                    <div class="card-body card-block">
+                        <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class=" form-control-label">Sistema Operacional</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="select" id="selectSO" class="form-control">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class=" form-control-label">CPU</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="select" id="selectCPU" class="form-control">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class=" form-control-label">Memória</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="select" id="selectMemoria" class="form-control">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class=" form-control-label">Disco</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="select" id="selectDisco" class="form-control">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class="form-control-label">Software</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="select" id="selectSoftware" class="form-control selectpicker" multiple="multiple">
+
+                                      </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        <a href="home.html">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fa fa-reply"></i> Voltar
+                        </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        function getValues() {
+            getHardwares();
+            getSO();
+            getSoftwares();
+        }
+
+        function getSO() {
+            var response = $.ajax({ type: "GET",   
+                        url: "http://localhost:8080/so/all",   
+                        async: false
+                      }).responseText;
+            var json = JSON.parse(response);
+            var count = Object.keys(json).length;
+            for (i = 0; i < count; i++) {
+                document.getElementById("selectSO").innerHTML =
+                document.getElementById("selectSO").innerHTML + 
+                "<option value="+json[i].id+">"  + json[i].nome + " - " + json[i].versao + "</option>";
+            }
+        }
+
+        function getHardwares() {
+            var response = $.ajax({ type: "GET",   
+                        url: "http://localhost:8080/hardware/all",   
+                        async: false
+                      }).responseText;
+            var json = JSON.parse(response);
+            var count = Object.keys(json).length;
+            for (i = 0; i < count; i++) {
+                if (json[i].tipo.includes("CPU")) {
+                    document.getElementById("selectCPU").innerHTML =
+                    document.getElementById("selectCPU").innerHTML + 
+                    "<option value="+json[i].id+">"  + json[i].tipo + "</option>";
+                } else if (json[i].tipo.includes("SSD")) {
+                    document.getElementById("selectDisco").innerHTML =
+                    document.getElementById("selectDisco").innerHTML + 
+                    "<option value="+json[i].id+">"  + json[i].tipo + "</option>";
+                } else {
+                    document.getElementById("selectMemoria").innerHTML =
+                    document.getElementById("selectMemoria").innerHTML + 
+                    "<option value="+json[i].id+">"  + json[i].tipo + "</option>";
+                }
+            }
+        }
+    
+        function getSoftwares() {
+            var response = $.ajax({ type: "GET",   
+                        url: "http://localhost:8080/software/all",   
+                        async: false
+                      }).responseText;
+            var json = JSON.parse(response);
+            var count = Object.keys(json).length;
+            for (i = 0; i < count; i++) {
+                document.getElementById("selectSoftware").innerHTML =
+                document.getElementById("selectSoftware").innerHTML + 
+                "<option value="+json[i].id+">"  + json[i].nome + " - " + json[i].descricao + "</option>";
+            }
+        }
+    </script>
+    </body>
+</html>
